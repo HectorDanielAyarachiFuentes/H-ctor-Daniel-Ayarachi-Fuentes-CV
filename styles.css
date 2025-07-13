@@ -700,102 +700,102 @@ input:checked + .slider:before {
    Diseño Responsivo (Mobile First Approach)
    ========================================================================== */
 
-/* --- Estilos para Tablets y Móviles Grandes (hasta 1023px) --- */
+/* ==========================================================================
+   DISEÑO RESPONSIVO DEFINITIVO
+   ========================================================================== */
+
+/* --- Estilos para Tablets y Móviles (a partir de 1023px hacia abajo) --- */
 @media (max-width: 1023px) {
-  /* 1. LAYOUT PRINCIPAL: Apilar la barra lateral y el contenido principal */
+
+  /* 1. CORRECCIÓN DEL LAYOUT PRINCIPAL (El paso más importante)
+     Forzamos el apilamiento vertical de la barra lateral y el contenido.
+  */
   .lg\:grid-cols-4 {
-    grid-template-columns: 1fr;
+    display: block; /* Anulamos el 'grid' para un flujo vertical simple y seguro */
   }
 
-  .lg\:col-span-1,
-  .lg\:col-span-3 {
-    grid-column: span 1 / span 1;
-  }
+  /*
+    Como ya no es un grid, las clases col-span no tienen efecto,
+    así que no es necesario sobreescribirlas. 'display: block' lo resuelve todo.
+  */
 
-  /* 2. ELEMENTOS FIJOS: Desactivar el 'sticky' para un scroll natural */
+  /* 2. CORRECCIÓN DE ELEMENTOS 'STICKY' (Fijos)
+     Los devolvemos al flujo normal del documento para evitar solapamientos.
+  */
   .sticky {
-    position: static;
+    position: static !important; /* Usamos !important para asegurar la anulación */
+    width: auto;
   }
   
-  /* 3. ESPACIADO: Añadir un margen a la barra lateral para separarla del contenido */
-  aside .sticky {
-    margin-bottom: 2rem;
+  /* 3. AÑADIR ESPACIADO
+     Creamos una separación entre la barra lateral y el contenido principal.
+  */
+  aside {
+    margin-bottom: 2.5rem; /* 40px de espacio */
   }
 
-  /* 4. TIPOGRAFÍA DEL HÉROE: Reducir ligeramente el título principal */
-  h1.text-6xl.md\:text-7xl {
-    font-size: 4rem;
-    line-height: 1.1;
+  /* 4. AJUSTES FINOS DE LA NAVEGACIÓN EN TABLET
+     Permitimos que los botones se reorganicen si no caben.
+  */
+  main .glass-nav .flex.space-x-1 {
+    flex-wrap: wrap;
+    justify-content: center;
   }
+
 }
 
-/* --- Estilos para Móviles (hasta 767px) --- */
+
+/* --- Estilos Adicionales para Móviles Pequeños (a partir de 767px hacia abajo) --- */
 @media (max-width: 767px) {
-  /* 1. TIPOGRAFÍA DEL HÉROE: Reducir más los textos para pantallas pequeñas */
-  h1.text-6xl.md\:text-7xl {
-    font-size: 3rem;
-    line-height: 1.1;
-  }
-
-  .text-2xl.md\:text-3xl {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-  }
-
-  /* 2. GRID DE PROYECTOS: Apilar las tarjetas de proyecto */
-  .md\:grid-cols-2 {
-    grid-template-columns: 1fr;
-  }
   
-  /* 3. CONTENEDOR: Reducir el padding lateral para ganar espacio */
+  /* 1. AJUSTE DE TIPOGRAFÍA Y PADDING
+  */
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
   }
+  h1.text-6xl.md\:text-7xl {
+    font-size: 2.5rem; /* 40px, ideal para móvil */
+    line-height: 1.1;
+  }
+  .text-2xl.md\:text-3xl {
+    font-size: 1.25rem;
+  }
   
-  /* 4. NAVEGACIÓN PRINCIPAL: Apilar elementos si no caben */
-  nav .flex.justify-between {
+  /* 2. NAVEGACIÓN PRINCIPAL
+     Apilamos los botones y el toggle del modo oscuro.
+  */
+  main nav .flex.justify-between {
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
-  }
-  
-  /* 5. MODAL (Si existiera) */
-  .modal-content {
-    width: 90vw;
-    margin: 1rem auto;
+    gap: 1rem;
   }
 
-  /*
-   * 6. CORRECCIÓN DEL TIMELINE (¡ESTA ES LA PARTE NUEVA Y CLAVE!)
-   * Ajustamos el espaciado de la línea de tiempo para que quepa en pantallas estrechas.
+  nav .nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  /* 3. CORRECCIÓN DEL TIMELINE (Experiencia y Educación)
+     Reducimos los márgenes para que no se desborde.
   */
-  .timeline-section .timeline-container {
-    /* Mueve la línea vertical más cerca del borde izquierdo */
-    padding-left: 20px; 
-    border-left-width: 2px; /* Asegura que la línea siga siendo visible */
-  }
-
+  .timeline-section .timeline-container,
   .timeline-section .timeline-item {
-    /* Reduce el espacio a la izquierda de cada tarjeta de experiencia/educación */
-    padding-left: 20px; 
+    padding-left: 20px;
   }
-
   .timeline-section .timeline-icon {
-    /* Reposiciona el ícono circular para que se alinee con la nueva posición de la línea */
-    left: -11px; /* ( -(20px/2) - (ancho_borde/2) ) -> Ajustar si es necesario */
-    width: 22px;
-    height: 22px;
+    left: -12px;
   }
   
-  /* Hacemos que los íconos de adentro sean un poco más pequeños */
-  .timeline-section .timeline-icon .lucide {
-    width: 12px;
-    height: 12px;
+  /* El truco mágico para que las tarjetas no se desborden */
+  .timeline-card, .project-card {
+    min-width: 0;
   }
 
-  /* Finalmente, esta es la regla mágica que evita el desborde en layouts Flex o Grid: */
-  .timeline-card {
-    min-width: 0;
+  /* 4. PROYECTOS
+     Aseguramos una sola columna para las tarjetas de proyectos.
+  */
+  .grid.md\:grid-cols-2 {
+    grid-template-columns: 1fr;
   }
 }

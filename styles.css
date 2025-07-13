@@ -63,7 +63,11 @@
   --white-20: rgba(255, 255, 255, 0.2);
   --white-40: rgba(255, 255, 255, 0.4);
 }
-
+:root {
+  /* ... tus otras variables ... */
+  --input-border-light: hsl(210, 10%, 80%); /* <-- Añade esta línea */
+  /* ... tus otras variables ... */
+}
 .dark {
   /* Dark mode - Deep backgrounds with light text */
   --background: hsl(222, 47%, 8%);
@@ -484,6 +488,9 @@ body {
   height: 0;
 }
 
+/* Dark Mode Switch - High Contrast Final Version */
+
+/* El "riel" o fondo del interruptor */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -491,11 +498,12 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--muted);
-  transition: 0.3s;
+  background-color: var(--input-border-light); /* Fondo oscuro en modo claro */
+  transition: .3s;
   border-radius: 24px;
 }
 
+/* El círculo que se desliza */
 .slider:before {
   position: absolute;
   content: "";
@@ -503,9 +511,37 @@ body {
   width: 18px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
-  transition: 0.3s;
+  background-color: var(--card); 
   border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  transition: .3s;
+}
+
+/* Estado activo/oscuro del interruptor */
+input:checked + .slider {
+  background-color: var(--accent); /* Cambia al color de acento cuando está activo */
+}
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* ---- Lógica de color para los iconos ---- */
+
+label.switch ~ .lucide {
+  transition: color 0.3s ease;
+}
+
+/* Modo Claro: Sol activo (oscuro), Luna inactiva (gris) */
+label.switch ~ .lucide-sun { color: var(--foreground); }
+label.switch ~ .lucide-moon { color: var(--muted-foreground); }
+
+/* Modo Oscuro: Sol inactivo, Luna activa */
+input:checked ~ .lucide-sun { color: var(--muted-foreground); }
+input:checked ~ .lucide-moon { color: var(--foreground); }
+
+/* Sobreescribimos el color del riel para el modo oscuro, para que sea más sutil */
+.dark .slider {
+    background-color: var(--input);
 }
 
 input:checked + .slider {

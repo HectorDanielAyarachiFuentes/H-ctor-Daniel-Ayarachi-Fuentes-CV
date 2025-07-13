@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Héctor D. Ayarachi Fuentes - RRHH & Programación</title>
+    
+    <!-- Google Fonts: Inter para tipografía moderna y legible -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons: Conjunto de iconos ligero y moderno -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Custom Styles: Nuestro archivo CSS para control total del diseño -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link type="image/png" sizes="120x120" rel="icon" href="img/icono.png">
+    
+    <!-- Open Graph / Facebook (Metadata para compartir en redes sociales) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hectordanielayarachifuentes.github.io/cv-boostrap/">
+    <meta property="og:title" content="CV de Héctor Daniel Ayarachi Fuentes">
+    <meta property="og:description" content="Técnico en RRHH y programador autodidacta, buscando oportunidades en gestión de talento e innovación.">
+    <meta property="og:image" content="https://hectordanielayarachifuentes.github.io/cv-boostrap/img/meta.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+</head>
+<body class="font-inter antialiased bg-background text-foreground transition-colors duration-300">
+    <!-- Sección de Héroe (Pantalla de bienvenida con tu foto y nombre) -->
+    <section class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-20 to-primary-40"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="animate-fade-in">
+                <img 
+                    src="img/h.png"
+                    alt="Héctor Daniel Ayarachi Fuentes" 
+                    class="profile-image w-40 h-40 mx-auto mb-8 rounded-full border-4 border-white-20 shadow-glow object-cover"
+                />
+                
+                <h1 class="text-6xl md:text-7xl font-bold mb-6 tracking-tight">
+                    Héctor Daniel Ayarachi Fuentes
+                </h1>
+                
+                <div class="text-2xl md:text-3xl font-light mb-8 h-12">
+                    <span id="typewriter"></span><span class="typewriter-cursor ml-1">|</span>
+                </div>
+                
+                <button 
+                    onclick="scrollToContent()"
+                    class="btn-outline-hero"
+                >
+                    <i data-lucide="chevron-down" class="mr-2 h-5 w-5"></i>
+                    Ver mi Perfil
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido Principal del CV -->
+    <div id="main-content" class="container mx-auto px-6 py-12">
+        <div class="grid lg:grid-cols-4 gap-8">
+            <!-- Barra Lateral (Contacto, Información Personal y Habilidades) -->
+            <aside class="lg:col-span-1">
+                <div class="sticky top-24">
+                    <div class="card shadow-soft border-0">
+                        <div class="card-header pb-4">
+                            <h2 class="card-title flex items-center text-primary font-semibold">
+                                <i data-lucide="user" class="mr-2 h-5 w-5"></i>
+                                Contacto y Habilidades
+                            </h2>
+                        </div>
+                        
+                        <div class="card-content space-y-6">
+                            <!-- Información de Contacto -->
+                            <div>
+                                <h3 class="heading-sm">Contacto</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center text-sm">
+                                        <i data-lucide="map-pin" class="mr-3 h-4 w-4 text-accent"></i>
+                                        <span>Neuquén, Argentina</span>
+                                    </div>
+                                    <div class="flex items-center text-sm">
+                                        <i data-lucide="phone" class="mr-3 h-4 w-4 text-accent"></i>
+                                        <span>+54-299-5056-213</span>
+                                    </div>
+                                    <div class="flex items-center text-sm">
+                                        <i data-lucide="mail" class="mr-3 h-4 w-4 text-accent"></i>
+                                        <a href="mailto:mp4o@hotmail.com" class="text-foreground hover:text-accent transition-colors">
+                                            mp4o@hotmail.com
+                                        </a>
+                                    </div>
+                                    <div class="flex items-center text-sm">
+                                        <i data-lucide="github" class="mr-3 h-4 w-4 text-accent"></i>
+                                        <a href="https://github.com/HectorDanielAyarachiFuentes" class="text-foreground hover:text-accent transition-colors" target="_blank">
+                                            Mi GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Información Personal -->
+                            <div>
+                                <h3 class="heading-sm">Información Personal</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center text-sm">
+                                        <i data-lucide="cake" class="mr-3 h-4 w-4 text-accent"></i>
+                                        <span>30/11/1990 (<span id="edad"></span> años)</span>
+                                    </div>
+                                    <div class="flex items-center text-sm">
+                                        <i data-lucide="heart" class="mr-3 h-4 w-4 text-accent"></i>
+                                        <span>Soltero (sin hijos)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Habilidades Clave con barras de progreso -->
+                            <div>
+                                <h3 class="heading-sm">Habilidades Clave</h3>
+                                <div class="space-y-4">
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-sm items-baseline">
+                                            <span class="skill-name font-medium">Gestión de Talento y RRHH</span>
+                                            <span class="text-muted-foreground">Experto</span>
+                                        </div>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-sm items-baseline">
+                                            <span class="skill-name font-medium">Programación Web (HTML, CSS, JS)</span>
+                                            <span class="text-muted-foreground">Avanzado</span>
+                                        </div>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-sm items-baseline">
+                                            <span class="skill-name font-medium">Python (Automatización)</span>
+                                            <span class="text-muted-foreground">Intermedio</span>
+                                        </div>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-sm items-baseline">
+                                            <span class="skill-name font-medium">Ofimática Avanzada (Excel)</span>
+                                            <span class="text-muted-foreground">Experto</span>
+                                        </div>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botón para descargar el CV en PDF -->
+                            <button class="btn-primary w-full mt-4" onclick="downloadPDF()">
+                                <i data-lucide="download" class="mr-2 h-4 w-4"></i>
+                                Descargar CV en PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Contenido Principal: Perfil, Experiencia, Educación, Proyectos -->
+            <main class="lg:col-span-3 space-y-12">
+                <!-- Barra de Navegación Sticky -->
+                <nav class="glass-nav sticky top-6 mb-8 rounded-xl shadow-soft z-40">
+                    <div class="flex items-center justify-between px-6 py-3">
+                        <div class="flex space-x-1">
+                            <button class="nav-btn active" data-target="perfil">Perfil</button>
+                            <button class="nav-btn" data-target="experiencia">Experiencia</button>
+                            <button class="nav-btn" data-target="educacion">Educación</button>
+                            <button class="nav-btn" data-target="proyectos">Proyectos</button>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="sun" class="h-4 w-4 text-foreground"></i>
+                            <label class="switch">
+                                <input type="checkbox" id="darkModeToggle">
+                                <span class="slider"></span>
+                            </label>
+                            <i data-lucide="moon" class="h-4 w-4 text-foreground"></i>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Sección: Perfil Profesional -->
+                <section id="perfil" class="cv-section animate-fade-in">
+                    <h2 class="section-title">
+                        <i data-lucide="user" class="mr-3 h-8 w-8 text-accent"></i>
+                        Perfil Profesional
+                    </h2>
+                    <p class="text-lg text-muted-foreground leading-relaxed">
+                        Técnico en Recursos Humanos con visión y pasión por la conexión entre talento y tecnología. Combino mi experticia en RRHH con habilidades de programación (HTML, CSS, JavaScript, Python) para optimizar procesos y potenciar el desarrollo profesional. Actualmente cursando la Licenciatura en Gestión de Recursos Humanos, busco entornos que valoren la innovación y el trato humano.
+                    </p>
+                </section>
+                
+                <!-- Sección: Experiencia Laboral -->
+                <section id="experiencia" class="cv-section timeline-section">
+                    <h2 class="section-title">
+                        <i data-lucide="briefcase" class="mr-3 h-8 w-8 text-accent"></i>
+                        Experiencia
+                    </h2>
+                    
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i data-lucide="briefcase" class="h-5 w-5"></i></div>
+                            <div class="timeline-card">
+                                <h3 class="text-xl font-semibold text-foreground mb-2">Asesor Comercial</h3>
+                                <p class="text-accent font-medium mb-3">Varios | Actualidad</p>
+                                <ul class="list-disc list-inside text-muted-foreground leading-relaxed space-y-1">
+                                    <li>Consistente superación de objetivos de ventas, destacando el cierre de 4 motos en un día.</li>
+                                    <li>Implementación de estrategias efectivas de marketing y fidelización de clientes.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i data-lucide="briefcase" class="h-5 w-5"></i></div>
+                            <div class="timeline-card">
+                                <h3 class="text-xl font-semibold text-foreground mb-2">Asesor Comercial</h3>
+                                <p class="text-accent font-medium mb-3">MendoMotos | Dic. 2018 - Sep. 2019</p>
+                                <ul class="list-disc list-inside text-muted-foreground leading-relaxed space-y-1">
+                                    <li>Asesoramiento integral a clientes en compra, financiación y seguros de motocicletas.</li>
+                                    <li>Incremento del 15% en ventas y desarrollo de relaciones sólidas con clientes.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i data-lucide="briefcase" class="h-5 w-5"></i></div>
+                            <div class="timeline-card">
+                                <h3 class="text-xl font-semibold text-foreground mb-2">Auxiliar Administrativo</h3>
+                                <p class="text-accent font-medium mb-3">Hospital Castro Rendón | Jun. 2017 - Abr. 2018</p>
+                                <ul class="list-disc list-inside text-muted-foreground leading-relaxed space-y-1">
+                                    <li>Gestión de trámites para nombramiento de personal de enfermería.</li>
+                                    <li>Control de depósito de maestranza y organización de agendas médicas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección: Educación -->
+                <section id="educacion" class="cv-section timeline-section">
+                    <h2 class="section-title">
+                        <i data-lucide="graduation-cap" class="mr-3 h-8 w-8 text-accent"></i>
+                        Educación
+                    </h2>
+                    
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i data-lucide="book-open" class="h-5 w-5"></i></div>
+                            <div class="timeline-card">
+                                <h3 class="text-xl font-semibold text-foreground mb-2">Licenciatura en Gestión de Recursos Humanos (Cursando)</h3>
+                                <p class="text-accent font-medium mb-3">Universidad Nacional del Comahue (UNCo) - CURZA</p>
+                                <p class="text-muted-foreground">Ampliando conocimientos en RRHH estratégicos y gestión de talento.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i data-lucide="book-open" class="h-5 w-5"></i></div>
+                            <div class="timeline-card">
+                                <h3 class="text-xl font-semibold text-foreground mb-2">Técnico Superior en Gestión de Recursos Humanos</h3>
+                                <p class="text-accent font-medium mb-3">I.P.E.T. | Neuquén</p>
+                                <p class="text-muted-foreground">Formación sólida en áreas clave de gestión de personal y relaciones laborales.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i data-lucide="code-2" class="h-5 w-5"></i></div>
+                            <div class="timeline-card">
+                                <h3 class="text-xl font-semibold text-foreground mb-2">Programador Web y Python Junior</h3>
+                                <p class="text-accent font-medium mb-3">Argentina Programa</p>
+                                <p class="text-muted-foreground">Capacitación en desarrollo frontend (HTML, CSS, JS) y backend con Python.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i data-lucide="book" class="h-5 w-5"></i></div>
+                            <div class="timeline-card">
+                                <h3 class="text-xl font-semibold text-foreground mb-2">Bachiller Humanístico</h3>
+                                <p class="text-accent font-medium mb-3">Escuela Santa Teresa de Jesús</p>
+                                <p class="text-muted-foreground">Educación secundaria con enfoque en ciencias sociales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Sección: Proyectos Destacados -->
+                <section id="proyectos" class="cv-section">
+                    <h2 class="section-title">
+                        <i data-lucide="lightbulb" class="mr-3 h-8 w-8 text-accent"></i>
+                        Proyectos Destacados
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="project-card">
+                            <div class="project-icon text-accent mb-4"><i data-lucide="layout" class="h-8 w-8"></i></div>
+                            <h3 class="text-xl font-semibold text-foreground mb-3">
+                                Currículum Web Interactivo
+                            </h3>
+                            <p class="text-muted-foreground">
+                                Diseño y desarrollo de este CV interactivo usando HTML, CSS y JavaScript para una presentación moderna y accesible.
+                            </p>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-icon text-accent mb-4"><i data-lucide="refresh-cw" class="h-8 w-8"></i></div>
+                            <h3 class="text-xl font-semibold text-foreground mb-3">
+                                Automatización de Tareas (Python)
+                            </h3>
+                            <p class="text-muted-foreground">
+                                Desarrollo de scripts en Python para optimizar procesos repetitivos y manejo básico de datos.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Pie de Página -->
+                <footer class="text-center text-muted-foreground py-8 border-t border-border mt-12">
+                    <p>© 2024 Héctor Daniel Ayarachi Fuentes. Desarrollado con pasión.</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Script de Lucide Icons (para la carga dinámica de iconos SVG) -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Script para generar PDF del CV -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <!-- Nuestro script JS personalizado -->
+    <script src="script.js"></script>
+</body>
+</html>
